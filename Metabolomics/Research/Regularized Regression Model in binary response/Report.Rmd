@@ -1,0 +1,88 @@
+---
+title: "Regularized Regression in Metabolomics Data"
+author: "Md Ismail Hossain, M. Sc."
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,warning = FALSE, message = FALSE)
+```
+
+
+\newpage
+
+```{r}
+library(readr)
+dat <- read_csv("Peak_area_data.csv")
+dim(dat)
+
+```
+
+
+
+```{r}
+library(caret)
+library(dplyr)
+library(glmnet)
+
+dat <- dat %>% 
+        select(-c("PARENT_SAMPLE_NAME"))
+dat$Treatment <- as.factor(dat$Treatment)
+```
+
+
+
+```{r}
+## 75% of the sample size
+# smp_size <- floor(0.8 * nrow(dat))
+# 
+# ## set the seed to make your partition reproducible
+# set.seed(123)
+# train_ind <- sample(seq_len(nrow(dat)), size = smp_size)
+# 
+# train <- dat[train_ind, ]
+# test <- dat[-train_ind, ]
+```
+
+
+
+
+
+
+
+
+```{r}
+set.seed(10)
+
+
+# this method controls everything about training
+# we will just set up 10-fold cross validation
+trctrl <- trainControl(method = "cv",number=10)
+
+
+enetFit <- train(Treatment~., data = dat, 
+                 method = "glmnet",
+                 trControl=trctrl,
+                 # alpha and lambda paramters to try
+                 tuneGrid = data.frame(alpha=0.5,
+                                       lambda=seq(0.1,0.7,0.05)))
+
+```
+
+```{r}
+
+# test accuracy 
+# class.res=predict(enetFit,test[,-1])
+# table(test$Treatment,class.res)
+```
+
+
+
+```{r}
+
+plot(varImp(enetFit),top=30)
+
+
+```
+
