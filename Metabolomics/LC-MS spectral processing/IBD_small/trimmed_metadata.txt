@@ -1,0 +1,11 @@
+Sample	Disease
+CD-6KUCT.zip	Control
+CD-9OS5Y.zip	Control
+CD-9WOBP.zip	Control
+CD-77FXR.zip	Control
+HC-9SNJ4.zip	Disease
+HC-9X47O.zip	Disease
+HC-AMR37.zip	Disease
+HC-AUP8B.zip	Disease
+QC_PREFA02.zip	QC
+QC_PREFB02.zip	QC
