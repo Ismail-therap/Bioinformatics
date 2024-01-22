@@ -1,0 +1,19 @@
+==========================
+=== Use Linux inside Windows ======
+===========================
+
+1. Go to Turn Windows features on or off:
+
+Check mark 2 things: Virtual Machine Platform and Windows Subsystem for Linux
+
+2. Go to Microsoft store and install your required Linux subsystem (e.g. Ubuntu, Debian, Kali etc... whatever you need)
+
+3. For me after clicking I got this error: 
+
+"installing, this may take a few minutes... wslregisterdistribution failed with error: 0x800701bc error: 0x800701bc wsl 2 requires an update to its kernel component. for information please visit https://aka.ms/wsl2kernel"
+
+Solved by downloading and installing from this source: https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+
+4. Setting Username and password by clicking on the Linux terminal after that. 
+
+5. 

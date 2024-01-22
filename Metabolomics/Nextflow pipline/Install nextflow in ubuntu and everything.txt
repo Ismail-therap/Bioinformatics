@@ -1,0 +1,205 @@
+==========================================
+=== Use Linux inside Windows (WSL2) ======
+==========================================
+
+1. Go to Turn Windows features on or off:
+
+Check mark 2 things: Virtual Machine Platform and Windows Subsystem for Linux
+
+2. Go to Microsoft store and install your required Linux subsystem (e.g. Ubuntu, Debian, Kali etc... whatever you need)
+
+3. For me after clicking I got this error: 
+
+"installing, this may take a few minutes... wslregisterdistribution failed with error: 0x800701bc error: 0x800701bc wsl 2 requires an update to its kernel component. for information please visit https://aka.ms/wsl2kernel"
+
+Solved by downloading and installing from this source: https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+
+4. Setting Username and password by clicking on the Linux terminal after that. 
+
+
+
+============================
+Install nextflow in ubuntu:
+============================
+
+1. Checking java > 11 is available or not in the system. In Linux terminal type:
+
+java -version
+
+If not install java then use this Youtube link to install java: https://www.youtube.com/watch?v=Y9SONu8rOwA
+
+2. After installing java. Just use the following command to install nextflow:
+
+
+curl -s https://get.nextflow.io | bash
+
+3. Testing the nextflow installation by running the following hello world code:
+
+./nextflow run hello
+
+it should produce something similar to this:
+
+N E X T F L O W  ~  version 23.10.0
+Pulling nextflow-io/hello ...
+ downloaded from https://github.com/nextflow-io/hello.git
+Launching `https://github.com/nextflow-io/hello` [hopeful_ritchie] DSL2 - revision: 1d71f857bb [master]
+executor >  local (4)
+[b2/edd738] process > sayHello (4) [100%] 4 of 4 ✔
+Hello world!
+
+Ciao world!
+
+Bonjour world!
+
+Hola world!
+
+=====================================================================================================
+Adding Nextflow in line of command: (Youtube link: https://www.youtube.com/watch?v=VKXzQxDoFf4&t=30s)
+======================================================================================================
+
+1. Crate a folder called nextflow and move the installed nextflow inside there:
+
+# Creating folder called nextflow:
+
+mkdir nextflow
+
+# Moving the installed nextflow instance inside nextflow folder (before install we can create the folder and install inside that)
+
+mv nextflow nextflow/
+
+2. Get the directory using pwd command as bellow:
+
+/home/statistician71/nextflow
+
+3. Paste this path into .basrc
+
+Open the basrc: sudo nano .bashrc
+Paste the path below using this command: export PATH=$PATH:/home/statistician71/nextflow
+
+Then save and exit. Then it should work. 
+
+
+=======================
+Installed docker: Steps
+=======================
+
+# Follow this link: https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+
+Install using the apt repository
+
+============================
+How I run the training files
+============================
+
+# Get the training files from github
+Step 1:  git clone https://github.com/nextflow-io/training.git
+
+# Set the working directory correctly
+Step 2: 
+cd training
+cd nf-training
+
+# Set the correct version
+Setp 3:
+
+export NXF_VER=23.10.0
+
+
+# Run the first script:
+Step 3:
+nextflow hello.nf
+
+Output should like these:
+
+N E X T F L O W  ~  version 23.10.0
+Launching `hello.nf` [insane_becquerel] DSL2 - revision: 197a0e289a
+executor >  local (3)
+[fa/2ccc2c] process > SPLITLETTERS (1)   [100%] 1 of 1 ✔
+[14/423688] process > CONVERTTOUPPER (2) [100%] 2 of 2 ✔
+HELLO
+WORLD!
+
+
+===================================
+nf-core install and configuration
+===================================
+
+1. First, install conda
+2. Run those lines to use Bioconda:
+
+conda config --add channels defaults
+conda config --add channels bioconda
+conda config --add channels conda-forge
+conda config --set channel_priority strict
+
+3. Now you can use conda to install and use any of the packages available in bioconda.
+
+4. As nf-core is available in bioconda just use following line to install nf-core:
+
+
+conda install nf-core
+
+5. Opean the .basrc usig: 
+
+sudo nano .bashrc
+
+6. Paste this line very bottom of the file, save and exit:
+
+eval "$(_NF_CORE_COMPLETE=bash_source nf-core)"
+
+
+
+
+================================
+Code editor
+==============================
+1. Install Visual studio code in windows
+2. Install WSL extension in VS Code (This option should pop up in VS code if it finds WSL installed in the system otherwise follow this link: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+3 .Open a WSL window directly from VS Code to edit and write code: https://code.visualstudio.com/docs/remote/wsl
+
+
+========================
+Installing anaconda
+==========================
+1. https://www.how2shout.com/how-to/install-anaconda-wsl-windows-10-ubuntu-linux-app.html
+
+Additionally i did:
+#  Activate the installation, Update Conda and disable the base auto activate
+
+https://medium.com/@parham.motameni/install-conda-on-wsl2-2e76d1e03229
+
+
+=============================================
+Use Nextflow, R an Python together in VS code!
+=============================================
+1. Use of Python inside vs code is strighforward
+
+Firstly, Install python "Extension is enabled on 'WSL: Ubuntu'" for VS code.
+Then .py extension should work fine. 
+
+2. But using R is tricky:
+
+Firstly, install R in ubuntu in WLS2 using this link: https://blog.jdblischak.com/posts/wsl-r/
+Secondly, installed the languageserver using this command: sudo apt install --assume-yes --no-install-recommends build-essential libcurl4-openssl-dev libssl-dev libxml2-dev r-base
+Thirdly, R Extension for Visual Studio Code
+Finally, Create a R file to test run. 
+
+3. To use Nextflow:
+
+Firstly, Install Nextflow language support for VS code.
+Then the .nf extension file should run. 
+
+
+=============
+Using Github
+=============
+
+# Git is installed with WSL2. So, we can use them directly from VS code.
+
+Commit and push:
+1. Cofiguration of username: git config --global user.name 'Ismail-therap'
+2. Configuration of email: git config --global user.email 'statistician71@gmail.com'
+3. In the terminal type: git init 
+4. Then click on: Source control and click on commit with a message. [commit command: git commit -m 'First commit']
+5. Finally click push option to publish in github. [push command: git push origin main]
+

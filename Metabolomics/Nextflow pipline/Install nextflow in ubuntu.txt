@@ -1,0 +1,100 @@
+============================
+Install nextflow in ubuntu:
+==============================
+
+1. Checking java > 11 is available or not in the system. In Linux terminal type:
+
+java -version
+
+If not install java then use this Youtube link to install java: https://www.youtube.com/watch?v=Y9SONu8rOwA
+
+2. After installing java. Just use the following command to install nextflow:
+
+
+curl -s https://get.nextflow.io | bash
+
+3. Testing the nextflow installation by running the following hello world code:
+
+./nextflow run hello
+
+it should produce something similar to this:
+
+N E X T F L O W  ~  version 23.10.0
+Pulling nextflow-io/hello ...
+ downloaded from https://github.com/nextflow-io/hello.git
+Launching `https://github.com/nextflow-io/hello` [hopeful_ritchie] DSL2 - revision: 1d71f857bb [master]
+executor >  local (4)
+[b2/edd738] process > sayHello (4) [100%] 4 of 4 ✔
+Hello world!
+
+Ciao world!
+
+Bonjour world!
+
+Hola world!
+
+=====================================================================================================
+Adding Nextflow in line of command: (Youtube link: https://www.youtube.com/watch?v=VKXzQxDoFf4&t=30s)
+=========================================================================================================
+
+1. Crate a folder called nextflow and move the installed nextflow inside there:
+
+# Creating folder called nextflow:
+
+mkdir nextflow
+
+# Moving the installed nextflow instance inside nextflow folder (before install we can create the folder and install inside that)
+
+mv nextflow nextflow/
+
+2. Get the directory using pwd command as bellow:
+
+/home/statistician71/nextflow
+
+3. Paste this path into .basrc
+
+Open the basrc: sudo nano .bashrc
+Paste the path below using this command: export PATH=$PATH:/home/statistician71/nextflow
+
+Then save and exit. Then it should work. 
+
+
+=======================
+Installed docker: Steps
+=======================
+
+# Follow this link: https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+
+Install using the apt repository
+
+============================
+How I run the training files
+============================
+
+# Get the training files from github
+Step 1:  git clone https://github.com/nextflow-io/training.git
+
+# Set the working directory correctly
+Step 2: 
+cd training
+cd nf-training
+
+# Set the correct version
+Setp 3:
+
+export NXF_VER=23.10.0
+
+
+# Run the first script:
+Step 3:
+nextflow hello.nf
+
+Output should like these:
+
+N E X T F L O W  ~  version 23.10.0
+Launching `hello.nf` [insane_becquerel] DSL2 - revision: 197a0e289a
+executor >  local (3)
+[fa/2ccc2c] process > SPLITLETTERS (1)   [100%] 1 of 1 ✔
+[14/423688] process > CONVERTTOUPPER (2) [100%] 2 of 2 ✔
+HELLO
+WORLD!

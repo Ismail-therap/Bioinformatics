@@ -1,0 +1,13 @@
+sample,level,type,msfile
+test1,MS1,Naive,/home/statistician71/metabolomics/malaria_raw/Naive/Naive_007.mzML
+test2,MS1,Naive,/home/statistician71/metabolomics/malaria_raw/Naive/Naive_027.mzML
+test3,MS1,Naive,/home/statistician71/metabolomics/malaria_raw/Naive/Naive_071.mzML
+test4,MS1,Naive,/home/statistician71/metabolomics/malaria_raw/Naive/Naive_109.mzML
+test5,MS1,Naive,/home/statistician71/metabolomics/malaria_raw/Naive/Naive_127.mzML
+test6,MS1,Naive,/home/statistician71/metabolomics/malaria_raw/Naive/Naive_139.mzML
+test7,MS1,Semi_immue,/home/statistician71/metabolomics/malaria_raw/Semi_immue/Semi_025.mzML
+test8,MS1,Semi_immue,/home/statistician71/metabolomics/malaria_raw/Semi_immue/Semi_045.mzML
+test9,MS1,Semi_immue,/home/statistician71/metabolomics/malaria_raw/Semi_immue/Semi_061.mzML
+test10,MS1,Semi_immue,/home/statistician71/metabolomics/malaria_raw/Semi_immue/Semi_091.mzML
+test11,MS1,Semi_immue,/home/statistician71/metabolomics/malaria_raw/Semi_immue/Semi_143.mzML
+test12,MS1,Semi_immue,/home/statistician71/metabolomics/malaria_raw/Semi_immue/Semi_157.mzML
